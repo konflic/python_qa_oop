@@ -73,8 +73,11 @@ if __name__ == "__main__":
     toyota_camry.drive()
     ducati_supersport.drive()
 
-    # Мнжественное наследование от класса Luxury
+    # Проверяем на подкласс
+    # print(issubclass(Motocycle, Vehicle))
+
+    # Мнжественное наследование от класса Luxurious
     # ducati_supersport.show_off()
 
     # Взаимодействие с другим классом
-    toyota_camry.crash_into(ducati_supersport)
+    # toyota_camry.crash_into(ducati_supersport)
