@@ -33,7 +33,7 @@ class Vehicle:
 
     def crash_into(self, vehicle):
         if not isinstance(vehicle, Vehicle):
-            print("Only another Vehicle can be crashed into!")
+            print("Only another Vehicle class can be crashed into!")
         else:
             print(f"Bang! {self.get_name()} crashed into {vehicle.get_name()}!")
 
@@ -58,7 +58,7 @@ class Motocycle(Vehicle):
     def __init__(self, brand, model):
         super().__init__(brand, model, 4)
 
-    # Полиморфизм
+    # Polymorphism
     # def drive(self):
     #     if self.get_engine_status() != "On":
     #         print(f"To drive {self.get_name()} you must start engine first!")
@@ -73,11 +73,11 @@ if __name__ == "__main__":
     toyota_camry.drive()
     ducati_supersport.drive()
 
-    # Проверяем на подкласс
+    # Check if subclass
     # print(issubclass(Motocycle, Vehicle))
 
-    # Мнжественное наследование от класса Luxurious
+    # Multiple inheritance or mixin Luxurious
     # ducati_supersport.show_off()
 
-    # Взаимодействие с другим классом
+    # Another class interaction
     # toyota_camry.crash_into(ducati_supersport)

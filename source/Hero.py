@@ -1,9 +1,9 @@
 class Hero:
-    __HERO_COUNT = 0
+    __COUNT = 0
 
     def __init__(self, defend, healing, power, name):
         if defend + healing + power > 100:
-            raise AttributeError("Sum of defend, healing and power skill can not be > 100")
+            raise AttributeError("Defend + healing + power can not be > 100")
         self.__health = 100
         self.__defend = defend
         self.__healing = healing
@@ -16,12 +16,19 @@ class Hero:
         return "{}:{}hp".format(self.__name, self.__health)
 
     def __del__(self):
-        self.__HERO_COUNT -= 1
-        print("Hero destroyed! Only {} Hero left!".format(self.__HERO_COUNT))
+        self.__decrease_count()
 
     @property
     def name(self):
         return self.__name
+
+    @property
+    def health(self):
+        return self.__health
+
+    @property
+    def count(self):
+        return self.__COUNT
 
     def hit(self, other_hero):
         if not isinstance(other_hero, Hero):
@@ -38,12 +45,11 @@ class Hero:
     def __take_hit(self, other_hero):
         damage = other_hero.__power - self.__defend
         self.__health = self.__health - damage
-        print("Hero '{}' hit hero '{}' and made {} damage!".format(other_hero.name, self.__name, damage))
 
-    def __increase_count(self):
-        self.__HERO_COUNT += 1
-        print("There are {} Hero!".format(self.__HERO_COUNT))
+    @classmethod
+    def __increase_count(cls):
+        cls.__COUNT += 1
 
-    def get_health(self):
-        print("Hero '{}' health is {}".format(self.__name, self.__health))
-        return self.__health
+    @classmethod
+    def __decrease_count(cls):
+        cls.__COUNT -= 1

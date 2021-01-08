@@ -1,21 +1,26 @@
-class Car:  # Объявление класса Human
+# New class declaration
+class Car:
     pass
 
 
-class Animal:  # Объявление класса Animal
+# New class Animal
+class Animal:
     pass
 
 
-# Создание объектов (экземпляров) классов
+# Creating class instances (objects)
 toyota = Car()
 lada = Car()
 dog = Animal()
 
-# Проверка на экземпляр класса
+
+# Checking class of objects
 print("toyota <- Car", isinstance(toyota, Car))
 print("lada <- Car", isinstance(lada, Car))
 print("dog <- Car", isinstance(dog, Animal))
 
-# Это не создание в присвоение
+
+# Class is also an object
+print(Car)
 honda = Car
 print(isinstance(honda, Car))
