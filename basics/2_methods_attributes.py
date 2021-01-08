@@ -1,6 +1,5 @@
-class Car:  # Объявление класса Human
-    """Car class"""
-    wheels = 4
+class Car:
+    wheels = 4 # class attribute
 
     def drive(self):
         print("Car is driving")
@@ -9,9 +8,8 @@ class Car:  # Объявление класса Human
         print("Car stopped")
 
 
-class Animal:  # Объявление класса Animal
-    """Animal class"""
-    legs = 4
+class Animal:
+    legs = 4 # class attribute
 
     def make_sound(self):
         print("I'm Animal")
@@ -21,17 +19,13 @@ class Animal:  # Объявление класса Animal
 
 
 print("======= Cars =======")
-# Создаем объекты Car
 toyota = Car()
 honda = Car()
 
+# Calling methods
 toyota.drive()
 honda.stop()
+
+# Getting attributes
 print(honda.wheels)
 print(toyota.wheels)
-
-print("======= Animals =======")
-# Создаем объекты Animal
-dog = Animal()
-lion = Animal()
-print(dog.legs)

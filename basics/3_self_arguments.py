@@ -1,5 +1,4 @@
 class Car:
-    """Car class"""
     engine_status = "Off"
 
     def __init__(self, brand, model, wheels):
@@ -9,12 +8,10 @@ class Car:
         self.wheels = wheels
 
     def start_engine(self):
-        """Starting car engine"""
         self.engine_status = "On"
         print(f"Engine of {self.brand} {self.model} started.")
 
     def go(self):
-        """Start driving the car"""
         self.start_engine()
         print(f"The {self.brand} {self.model} is driving.")
 
