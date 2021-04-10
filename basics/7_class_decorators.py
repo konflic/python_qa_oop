@@ -1,14 +1,16 @@
-class Example:
+class Account:
     __counter = 0
-    __hidden_attribute = "I'm hidden"
+    __balance = 100
 
     def __init__(self):
-        if self.__up_counter() > 4:
-            raise Exception("Too many classes created!")
+        if self.__up_counter() > 5:
+            raise Exception("Too many accounts created!")
+        print("Account {} created!".format(self.__counter))
 
     @property
-    def hidden(self):
-        return self.__hidden_attribute + ", but accessible!"
+    def balance(self):
+        print("Notification: Balance was get!")
+        return self.__balance
 
     @staticmethod
     def static():
@@ -19,23 +21,14 @@ class Example:
         cls.__counter += 1
         return cls.__counter
 
-    @classmethod
-    def instances_created(self):
+    def accounts_created(self):
         return self.__counter
 
 
-Example.static()
+ex = Account()
+ex2 = Account()
+ex3 = Account()
+ex4 = Account()
+ex5 = Account()
 
-ex = Example()
-print(ex.hidden)
-
-ex2 = Example()
-ex3 = Example()
-
-print(Example.instances_created())
-
-ex4 = Example()
-
-print(Example.instances_created())
-
-ex5 = Example()
+print(ex.accounts_created())

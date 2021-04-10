@@ -23,8 +23,7 @@ class Child2(Parent2):
 class Child(Child1, Child2):
     pass
 
+# Показать дерево поиска методов для класса
+print(Child.mro())
 
-# print(Child.mro())
-
-child = Child()
-child.method()
+Child().method()

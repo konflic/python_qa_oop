@@ -21,6 +21,9 @@ class Animal:
 print("======= Cars =======")
 toyota = Car()
 honda = Car()
+dog = Animal()
+
+dog.make_sound()
 
 # Calling methods
 toyota.drive()
