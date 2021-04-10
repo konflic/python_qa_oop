@@ -50,34 +50,30 @@ class Luxurious:
 class Car(Vehicle):
 
     def __init__(self, brand, model):
+        # Через super() обращаемся к конструктору Vehicle
         super().__init__(brand, model, 4)
 
 
-class Motocycle(Vehicle):
+class Motocycle(Luxurious, Vehicle):
 
     def __init__(self, brand, model):
-        super().__init__(brand, model, 4)
+        super().__init__(brand, model, 2)
 
-    # Polymorphism
-    # def drive(self):
-    #     if self.get_engine_status() != "On":
-    #         print(f"To drive {self.get_name()} you must start engine first!")
-    #     else:
-    #         print(f"The {self.get_name()} is driving.")
+    def boom(self):
+        print("Boom!")
+
+    def drive(self):
+        if self.get_engine_status() != "On":
+            print(f"To drive {self.get_name()} you must start engine first!")
+        else:
+            print(f"The {self.get_name()} is driving.")
 
 
 if __name__ == "__main__":
-    toyota_camry = Car(brand="Toyota", model="Camry")
     ducati_supersport = Motocycle(brand="Ducati", model="Supersport")
-
-    toyota_camry.drive()
     ducati_supersport.drive()
+    ducati_supersport.boom()
+    print(ducati_supersport.get_wheels())
+    ducati_supersport.show_off()
+    ducati_supersport.get_name()
 
-    # Check if subclass
-    # print(issubclass(Motocycle, Vehicle))
-
-    # Multiple inheritance or mixin Luxurious
-    # ducati_supersport.show_off()
-
-    # Another class interaction
-    # toyota_camry.crash_into(ducati_supersport)

@@ -26,8 +26,10 @@ class Car:
 
     def drive(self):
         """Start driving the car"""
-        self.start_engine()
-        print(f"The {self.get_car_name()} is driving.")
+        if self.__engine_status == "Off":
+            print("Turn on engine first!")
+        else:
+            print(f"The {self.get_car_name()} is driving.")
 
     def turn_off_engine(self):
         """Turn car engine off"""
@@ -38,13 +40,4 @@ class Car:
             print(f"Engine of {self.get_car_name()} is already off")
 
 
-# Car.__b = "b"
-
 toyota_camry = Car(brand="Toyota", model="Camry")
-
-toyota_camry.__engine_status = "On"
-toyota_camry._wheels = 2
-
-# # print(toyota_camry._wheels) # Informer
-# print(toyota_camry.get_engine_status())
-# print(toyota_camry.get_wheels())

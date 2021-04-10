@@ -49,7 +49,10 @@ class Hero:
     @classmethod
     def __increase_count(cls):
         cls.__COUNT += 1
+        print("{} heroes exist".format(cls.__COUNT))
 
     @classmethod
     def __decrease_count(cls):
-        cls.__COUNT -= 1
+        print("Hero was destroyed!")
+        if cls.__COUNT > 0: cls.__COUNT -= 1
+        print("{} heroes left".format(cls.__COUNT))

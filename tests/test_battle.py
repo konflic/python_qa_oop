@@ -10,41 +10,38 @@ def test_hero_creation():
         Hero(defend=30, healing=30, power=70, name="Ninja")
 
 
-def test_hero_hit_negative():
+def test_hero_hit_negative(default_hero):
     """Hero can't hit other classes"""
 
-    class Car: pass
+    class Car:
+        pass
 
     with pytest.raises(Exception):
-        hero1 = Hero(defend=30, healing=30, power=40, name="Ninja")
-        hero1.hit(Car())
+        default_hero.hit(Car())
 
 
-def test_hit():
-    """Hero hit other hero"""
-    hero1 = Hero(defend=30, healing=30, power=40, name="Ninja")
-    hero2 = Hero(defend=30, healing=40, power=30, name="Optimus")
-    hero1.hit(hero2)
-    assert hero2.health == 90
+def test_hit(default_hero, second_hero):
+    """Hero hit other hero and make damage"""
+    default_hero.hit(second_hero)
+    assert second_hero.health == 90
 
 
-def test_heal_health_increase():
+def test_heal_health_increase(default_hero, second_hero):
     """Healing can't increase health over 100"""
-    hero1 = Hero(defend=30, healing=30, power=40, name="Ninja")
-    hero2 = Hero(defend=30, healing=40, power=30, name="Optimus")
-    hero1.hit(hero2)
-    assert hero2.health == 90
-    hero2.heal()
-    assert hero2.health == 100
+    default_hero.hit(second_hero)
+    assert second_hero.health == 90
+    second_hero.heal()
+    assert second_hero.health == 100
 
 
-def test_heal_hero_full_health():
+def test_heal_hero_full_health(default_hero):
     """Full health is not healing for hero"""
-    hero = Hero(defend=30, healing=30, power=40, name="Ninja")
-    assert hero.heal() == "Hero health is full"
-    assert hero.health == 100
+    assert default_hero.heal() == "Hero health is full"
+    assert default_hero.health == 100
 
 
+# Тесты ниже работают плохо так если есть сложная зависимость от состоятния класса.
+# Для демонстрации убрать проверку на ноль героев в классе Hero
 def test_hero_counter():
     random_amount = random.randint(5, 10)
     heroes = []
@@ -54,10 +51,9 @@ def test_hero_counter():
 
 
 def test_hero_counter_delete():
-    random_amount = random.randint(5, 10)
     heroes = []
-    for i in range(random_amount):
+    for i in range(5):
         heroes.append(Hero(defend=30, healing=30, power=40, name=f"Hero{i}"))
-    assert len(heroes) == random_amount
+    assert heroes[0].count == 5, "There should be 5 heroes"
     del heroes[0]
-    assert heroes[1].count == random_amount - 1
+    assert heroes.pop().count == 4, "There should be only 4 heroes in count"

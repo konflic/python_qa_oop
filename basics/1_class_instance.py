@@ -4,23 +4,24 @@ class Car:
 
 
 # New class Animal
-class Animal:
+class Animal(Car):
     pass
 
 
 # Creating class instances (objects)
-toyota = Car()
+toyota_camry = Animal()
 lada = Car()
 dog = Animal()
 
 
 # Checking class of objects
-print("toyota <- Car", isinstance(toyota, Car))
+print("toyota <- Car", isinstance(toyota_camry, Car))
 print("lada <- Car", isinstance(lada, Car))
 print("dog <- Car", isinstance(dog, Animal))
 
 
 # Class is also an object
-print(Car)
 honda = Car
-print(isinstance(honda, Car))
+new_car = honda()
+
+print(isinstance(new_car, Car))
