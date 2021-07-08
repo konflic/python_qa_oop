@@ -10,13 +10,13 @@ class Hero:
         self.__power = power
         self.__name = name
         self.__increase_count()
-        print(f"Hero '{name}' with {defend} {healing} {power} created!")
 
-    def __str__(self):
-        return "{}:{}hp".format(self.__name, self.__health)
+    def __repr__(self):
+        return "{}: {} hp".format(self.__name, self.__health)
 
     def __del__(self):
         self.__decrease_count()
+        print(f"{self} was killed!")
 
     @property
     def name(self):
@@ -30,10 +30,10 @@ class Hero:
     def count(self):
         return self.__COUNT
 
-    def hit(self, other_hero):
-        if not isinstance(other_hero, Hero):
+    def hit(self, enemy):
+        if not isinstance(enemy, Hero):
             raise Exception("You can hit only Hero!")
-        other_hero.__take_hit(self)
+        enemy.__take_hit(self)
 
     def heal(self):
         if self.__health == 100:
@@ -42,17 +42,18 @@ class Hero:
             res = self.__health + self.__healing
             self.__health = 100 if res > 100 else res
 
-    def __take_hit(self, other_hero):
-        damage = other_hero.__power - self.__defend
+    def __take_hit(self, enemy):
+        damage = enemy.__power - self.__defend
         self.__health = self.__health - damage
+        if self.__health < 0:
+            del self
 
     @classmethod
     def __increase_count(cls):
         cls.__COUNT += 1
-        print("{} heroes exist".format(cls.__COUNT))
+        print("{} hero created".format(cls.__COUNT))
 
     @classmethod
     def __decrease_count(cls):
-        print("Hero was destroyed!")
         if cls.__COUNT > 0: cls.__COUNT -= 1
-        print("{} heroes left".format(cls.__COUNT))
+        print("{} hero left".format(cls.__COUNT))

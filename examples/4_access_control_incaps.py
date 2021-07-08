@@ -33,11 +33,8 @@ class Car:
 
     def turn_off_engine(self):
         """Turn car engine off"""
-        if self.get_engine_status() == "On":
-            self.__engine_status = "Off"
-            print(f"Engine of {self.get_car_name()} was turned off")
-        else:
-            print(f"Engine of {self.get_car_name()} is already off")
+        self.__engine_status = "Off"
+        print(f"Engine of {self.get_car_name()} turned off.")
 
 
 toyota_camry = Car(brand="Toyota", model="Camry")

@@ -16,19 +16,3 @@ class Animal:
 
     def sleep(self):
         print("Animal start sleeping")
-
-
-print("======= Cars =======")
-toyota = Car()
-honda = Car()
-dog = Animal()
-
-dog.make_sound()
-
-# Calling methods
-toyota.drive()
-honda.stop()
-
-# Getting attributes
-print(honda.wheels)
-print(toyota.wheels)
