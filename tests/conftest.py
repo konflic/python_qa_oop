@@ -1,6 +1,6 @@
 import pytest
 
-from source.Hero import Hero
+from src.Hero import Hero
 
 
 @pytest.fixture

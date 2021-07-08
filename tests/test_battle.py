@@ -1,7 +1,7 @@
 import pytest
 import random
 
-from source.Hero import Hero
+from src.Hero import Hero
 
 
 def test_hero_creation():
@@ -26,17 +26,6 @@ def test_hit(default_hero, second_hero):
     assert second_hero.health == 90
 
 
-def test_killed(default_hero, second_hero):
-    """Hero hit other hero and make damage"""
-    while second_hero.health > 10:
-        default_hero.hit(second_hero)
-    default_hero.hit(second_hero)
-    default_hero.hit(second_hero)
-    default_hero.hit(second_hero)
-    default_hero.hit(second_hero)
-    assert default_hero.count == 1
-
-
 def test_heal_health_increase(default_hero, second_hero):
     """Healing can't increase health over 100"""
     default_hero.hit(second_hero)
@@ -52,7 +41,6 @@ def test_heal_hero_full_health(default_hero):
 
 
 # Тесты ниже работают плохо так если есть сложная зависимость от состоятния класса.
-# Для демонстрации убрать проверку на ноль героев в классе Hero
 def test_hero_counter():
     random_amount = random.randint(5, 10)
     heroes = []
