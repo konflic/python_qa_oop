@@ -26,6 +26,17 @@ def test_hit(default_hero, second_hero):
     assert second_hero.health == 90
 
 
+def test_killed(default_hero, second_hero):
+    """Hero hit other hero and make damage"""
+    while second_hero.health > 10:
+        default_hero.hit(second_hero)
+    default_hero.hit(second_hero)
+    default_hero.hit(second_hero)
+    default_hero.hit(second_hero)
+    default_hero.hit(second_hero)
+    assert default_hero.count == 1
+
+
 def test_heal_health_increase(default_hero, second_hero):
     """Healing can't increase health over 100"""
     default_hero.hit(second_hero)
