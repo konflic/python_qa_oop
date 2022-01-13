@@ -37,4 +37,5 @@ class Car:
         print(f"Engine of {self.get_car_name()} turned off.")
 
 
-toyota_camry = Car(brand="Toyota", model="Camry")
+if __name__ == "__main__":
+    toyota_camry = Car(brand="Toyota", model="Camry")
