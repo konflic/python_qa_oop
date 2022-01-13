@@ -24,19 +24,6 @@ class Vehicle:
         self.start_engine()
         print(f"The {self.get_name()} is driving.")
 
-    def turn_off_engine(self):
-        if self.get_engine_status() == "On":
-            self.__engine_status = "Off"
-            print(f"Engine of {self.get_name()} was turned off")
-        else:
-            print(f"Engine of {self.get_name()} is already off")
-
-    def crash_into(self, vehicle):
-        if not isinstance(vehicle, Vehicle):
-            print("Only another Vehicle class can be crashed into!")
-        else:
-            print(f"Bang! {self.get_name()} crashed into {vehicle.get_name()}!")
-
 
 class Luxurious:
 
@@ -54,7 +41,8 @@ class Car(Vehicle):
         super().__init__(brand, model, 4)
 
 
-class Motocycle(Luxurious, Vehicle):
+# Поиск метода идёт в первом классе множественного наследования
+class LuxMotocycle(Vehicle, Luxurious):
 
     def __init__(self, brand, model):
         super().__init__(brand, model, 2)
@@ -70,10 +58,16 @@ class Motocycle(Luxurious, Vehicle):
 
 
 if __name__ == "__main__":
-    ducati_supersport = Motocycle(brand="Ducati", model="Supersport")
+    ducati_supersport = LuxMotocycle(brand="Ducati", model="Supersport")
     ducati_supersport.drive()
     ducati_supersport.boom()
     print(ducati_supersport.get_wheels())
     ducati_supersport.show_off()
     ducati_supersport.get_name()
 
+    # Checking class of objects
+    # isinstance, issubclass
+    print(issubclass(Car, Vehicle))
+    print(issubclass(LuxMotocycle, Vehicle))
+    print(issubclass(LuxMotocycle, Luxurious))
+    print(isinstance(ducati_supersport, Vehicle))
