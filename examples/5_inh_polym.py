@@ -7,9 +7,6 @@ class Vehicle:
         self.model = model
         self._wheels = wheels
 
-    def get_wheels(self):
-        return self._wheels
-
     def get_engine_status(self):
         return self.__engine_status
 
@@ -47,27 +44,9 @@ class LuxMotocycle(Vehicle, Luxurious):
     def __init__(self, brand, model):
         super().__init__(brand, model, 2)
 
-    def boom(self):
-        print("Boom!")
-
-    def drive(self):
-        if self.get_engine_status() != "On":
-            print(f"To drive {self.get_name()} you must start engine first!")
-        else:
-            print(f"The {self.get_name()} is driving.")
-
 
 if __name__ == "__main__":
     ducati_supersport = LuxMotocycle(brand="Ducati", model="Supersport")
     ducati_supersport.drive()
-    ducati_supersport.boom()
-    print(ducati_supersport.get_wheels())
     ducati_supersport.show_off()
     ducati_supersport.get_name()
-
-    # Checking class of objects
-    # isinstance, issubclass
-    print(issubclass(Car, Vehicle))
-    print(issubclass(LuxMotocycle, Vehicle))
-    print(issubclass(LuxMotocycle, Luxurious))
-    print(isinstance(ducati_supersport, Vehicle))

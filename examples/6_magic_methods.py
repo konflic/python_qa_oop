@@ -17,8 +17,8 @@ class Beauty:
     def __eq__(self, other):
         return self.amount == other.amount
 
-    # def __call__(self, *args):
-    #     return str(self) + " got args " + str(args)
+    def __call__(self, *args):
+        return str(self) + " got args " + str(args)
 
 
 b1 = Beauty(100)
