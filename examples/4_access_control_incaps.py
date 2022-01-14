@@ -24,13 +24,6 @@ class Car:
         self.__engine_status = "On"
         print(f"Engine of {self.get_car_name()} started.")
 
-    def drive(self):
-        """Start driving the car"""
-        if self.__engine_status == "Off":
-            print("Turn on engine first!")
-        else:
-            print(f"The {self.get_car_name()} is driving.")
-
     def turn_off_engine(self):
         """Turn car engine off"""
         self.__engine_status = "Off"

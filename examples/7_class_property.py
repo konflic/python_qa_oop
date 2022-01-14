@@ -7,17 +7,17 @@ class Vehicle:
         self.model = model
         self._wheels = wheels
 
-    def get_wheels(self):
-        return self._wheels
+    def set_wheels(self, amount):
+        if amount > 0:
+            self._wheels = amount
 
-    # using getter method
     def get_engine_status(self):
         return self.__engine_status
 
-    # using property
     @property
     def engine_status(self):
         return self.__engine_status
+
 
 v1 = Vehicle("1", "2", 4)
 v2 = Vehicle("1", "2", 4)

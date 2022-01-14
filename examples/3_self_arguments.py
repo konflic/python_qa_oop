@@ -15,11 +15,6 @@ class Car:
         self.engine_status = "On"
         print(f"Engine of {self.brand} {self.model} stopped.")
 
-    def go(self):
-        if self.engine_status == "Off":
-            self.start_engine()
-        print(f"The {self.brand} {self.model} is driving.")
-
 
 toyota_camry = Car(brand="Toyota", model="Camry", wheels=4)
 honda_trio = Car(brand="Honda", model="Civic", wheels=3)
