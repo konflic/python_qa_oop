@@ -1,29 +1,31 @@
-class Vehicle:
-    _wheels = None
-    __engine_status = "Off"
+import random
 
-    def __init__(self, brand, model, wheels):
-        self.brand = brand
-        self.model = model
-        self._wheels = wheels
-
-    def set_wheels(self, amount):
-        if amount > 0:
-            self._wheels = amount
-
-    def get_engine_status(self):
-        return self.__engine_status
-
-    @property
-    def engine_status(self):
-        return self.__engine_status
+MATERIALS = {
+    "wood": 15.0,
+    "steel": 50.0,
+    "paper": 1.0
+}
 
 
-v1 = Vehicle("1", "2", 4)
-v2 = Vehicle("1", "2", 4)
+def get_price():
+    return random.randint(200, 500)
 
-print(v1.engine_status)
 
-v2._wheels = 10
+class Cube:
 
-print(v1._wheels)
+    def __init__(self, h, w, d, material):
+        self.h = h
+        self.w = w
+        self.d = d
+        self.material = material
+        self.price = None
+
+    def price(self):
+        return self.w * self.d * self.h * get_price()
+
+
+c = Cube(10, 10, 10, "wood")
+
+print(c.price())
+print(c.price())
+print(c.price())
