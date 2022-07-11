@@ -1,10 +1,13 @@
+DEFAULT_HEALTH = 100
+
+
 class Hero:
     __COUNT = 0
 
     def __init__(self, defend, healing, power, name):
-        if defend + healing + power > 100:
-            raise AttributeError("Defend + healing + power can not be > 100")
-        self.__health = 100
+        if defend + healing + power > DEFAULT_HEALTH:
+            raise AssertionError("Defend + healing + power can not be > 100")
+        self.__health = DEFAULT_HEALTH
         self.__defend = defend
         self.__healing = healing
         self.__power = power
@@ -29,6 +32,12 @@ class Hero:
     def count(self):
         return self.__COUNT
 
+    def get_power(self):
+        return self.__power
+
+    def get_defend(self):
+        return self.__defend
+
     def hit(self, enemy):
         print(f"{self} hit {enemy}")
         if not isinstance(enemy, Hero):
@@ -36,11 +45,11 @@ class Hero:
         enemy.__take_hit(self)
 
     def heal(self):
-        if self.__health == 100:
+        if self.__health == DEFAULT_HEALTH:
             return "Hero health is full"
         else:
             res = self.__health + self.__healing
-            self.__health = 100 if res > 100 else res
+            self.__health = DEFAULT_HEALTH if res > 100 else res
 
     def __take_hit(self, enemy):
         print(f"{self} got hit from {enemy}")

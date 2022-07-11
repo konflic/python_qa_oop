@@ -1,26 +1,39 @@
-class Vehicle:
-    __engine_status = "Off"
+class Page:
+    NAME = None
 
-    def __init__(self, brand, model):
-        self.brand = brand
-        self.model = model
+    def __init__(self, browser):
+        self.browser = browser
 
-    def get_engine_status(self):
-        return self.__engine_status
-
-    def set_engine_status(self, status):
-        if status not in ["On", "Off"]:
-            self.__engine_status = status
-        print("wrong value")
-
-    def get_name(self):
-        return f"{self.brand} {self.model}"
+    def open(self):
+        print("Opened: " + self.NAME)
 
 
-class LuxVehicle(Vehicle):
+class Browser:
+    pass
 
-    def get_name(self):
-        return f"!!!!{self.brand} {self.model}!!!!"
 
-    def show_off(self):
-        print(f"Hey you, checkout my {self.get_name()}!")
+class LoginPage(Page):
+    NAME = "LoginPage"
+    LOGIN_PAGE = "#login"
+
+    def login(self, username, password):
+        print(f"Input {username} {password}")
+        print("Click " + self.LOGIN_PAGE)
+
+
+class MainPage(Page):
+    NAME = "MainPage"
+    PROFILE_LOCATOR = "#profile"
+
+    def open_profile(self):
+        print("Click " + self.PROFILE_LOCATOR)
+
+
+browser = Browser()
+main_page = MainPage(browser=browser)
+login_page = LoginPage(browser=browser)
+
+main_page.open()
+main_page.open_profile()
+login_page.open()
+login_page.login("admin", "qwerty")

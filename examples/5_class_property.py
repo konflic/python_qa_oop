@@ -23,5 +23,3 @@ class Cube:
     @property
     def price(self):
         return self.w * self.d * self.h * get_price()
-
-c = Cube(10, 10, 10, "paper")

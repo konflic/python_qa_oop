@@ -1,30 +1,21 @@
-class Car:
-    __engine_status = "Off"
+class Page:
+    class_attribute = "CLASS_ATTR"
 
-    def __init__(self, brand, model, wheels, key):
-        self.brand = brand
-        self.model = model
-        self.wheels = wheels
-        self.key = key
+    def __init__(self, name):
+        self.name = name
+        self.new_attr = "NEW_ATTR"
 
-    def start_engine(self, key):
-        if key == self.key:
-            self.__engine_status = "On"
-            print(f"Engine of {self.brand} {self.model} started. On {self.wheels} wheels.")
+    def open(self):
+        print("Opened: " + self.name)
 
-    def drive(self):
-        if self.__engine_status == "On":
-            print(f"Ride on {self.brand} {self.model} started. On {self.wheels} wheels.")
-        else:
-            print("Turn on engine before drive.")
-
-    def stop_engine(self):
-        if self.__engine_status == "Off":
-            return None
-        self.__engine_status = "Off"
-        print(f"Engine of {self.brand} {self.model} stopped.")
+    def show(self):
+        print(self.class_attribute)
 
 
-toyota_camry = Car(brand="Toyota", model="Camry", wheels=4, key="1234")
+main_page = Page(name="MainPage")
+login_page = Page(name="LoginPage")
 
-toyota_camry.drive()
+print(main_page.new_attr)
+
+main_page.show()
+login_page.show()
