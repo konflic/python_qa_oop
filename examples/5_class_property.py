@@ -8,7 +8,8 @@ MATERIALS = {
 
 
 def get_price():
-    return random.randint(200, 500)
+    print("Got price!")
+    return random.randint(10, 50)
 
 
 class Cube:
@@ -18,14 +19,9 @@ class Cube:
         self.w = w
         self.d = d
         self.material = material
-        self.price = None
 
+    @property
     def price(self):
         return self.w * self.d * self.h * get_price()
 
-
-c = Cube(10, 10, 10, "wood")
-
-print(c.price())
-print(c.price())
-print(c.price())
+c = Cube(10, 10, 10, "paper")
