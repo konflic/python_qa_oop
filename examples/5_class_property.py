@@ -1,15 +1,7 @@
-import random
-
-MATERIALS = {
-    "wood": 15.0,
-    "steel": 50.0,
-    "paper": 1.0
-}
-
-
-def get_price():
-    print("Got price!")
-    return random.randint(10, 50)
+class Materials:
+    WOOD = 15.0
+    STEEL = 50.0
+    PAPER = 1.0
 
 
 class Cube:
@@ -22,4 +14,7 @@ class Cube:
 
     @property
     def price(self):
-        return self.w * self.d * self.h * get_price()
+        return self.w * self.d * self.h * self.material
+
+
+cube = Cube(h=10, w=2, d=5, material=Materials.WOOD)
